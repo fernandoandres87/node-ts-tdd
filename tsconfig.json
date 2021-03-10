@@ -5,14 +5,5 @@
       "target": "ES2019",
       "esModuleInterop": true,
       "allowJs": true,
-      "sourceMap": true,
-      "rootDir": "src"
-    },
-    "include": [
-      "src"
-    ],
-    "exclude": [
-      "**/*.spec.ts",
-      "**/*.test.ts"
-    ]
+    }
   }
