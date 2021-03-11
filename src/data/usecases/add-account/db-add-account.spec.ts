@@ -104,4 +104,6 @@ describe('DbAccount Usecase', () => {
         email: 'valid_email',
         password:'hashed_password'
       })
-})
+    })
+  }
+)
