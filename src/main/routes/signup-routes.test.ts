@@ -1,7 +1,6 @@
 import request from 'supertest'
-import { MongoHelper } from '../../infra/db/mongodb/helpers/mongo-helper';
+import { MongoHelper } from '../../infra/db/mongodb/helpers/mongo-helper'
 import app from '../config/app'
-
 
 describe('Signup Routes', () => {
   beforeAll(async () => {
@@ -11,7 +10,7 @@ describe('Signup Routes', () => {
   afterAll(async () => {
     await MongoHelper.disconnect()
   })
-  beforeEach(async ( )=>{
+  beforeEach(async () => {
     const accountCollections = await MongoHelper.getCollection('accounts')
     await accountCollections.deleteMany({})
   })
@@ -25,5 +24,5 @@ describe('Signup Routes', () => {
         passwordConfirmation: '123'
       })
       .expect(200)
-  });
-});
+  })
+})

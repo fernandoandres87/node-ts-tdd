@@ -6,8 +6,9 @@ const makeSut = (): LogMongoRepository => {
   return new LogMongoRepository()
 }
 
+let errorCollection: Collection
+
 describe('Log Mongo Error', () => {
-  let errorCollection: Collection
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
   })
