@@ -9,9 +9,9 @@ describe('Account Mongo Repository', () => {
   afterAll(async () => {
     await MongoHelper.disconnect()
   })
-  beforeEach( async () => {
-    const accountCollection = await MongoHelper.getCollection('account');
-   await accountCollection.deleteMany({})
+  beforeEach(async () => {
+    const accountCollection = await MongoHelper.getCollection('account')
+    await accountCollection.deleteMany({})
   })
   const makeSut = (): AccountMongoRepository => {
     return new AccountMongoRepository()
@@ -22,7 +22,7 @@ describe('Account Mongo Repository', () => {
       name: 'any_name',
       email: 'any_email@mail.com',
       password: 'any_password',
-      _id:undefined
+      _id: undefined
     }
     const account = await sut.add(newAccount)
     const testObject = MongoHelper.mapping(newAccount)
