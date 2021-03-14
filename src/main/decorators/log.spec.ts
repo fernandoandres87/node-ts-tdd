@@ -1,3 +1,4 @@
+import { serverError } from "../../presentation/helpers/http-helper";
 import { Controller, HttpRequest, HttpResponse } from "../../presentation/protocols";
 import { LogControllerDecorator } from "./logs";
 
@@ -5,6 +6,10 @@ import { LogControllerDecorator } from "./logs";
 interface SutTypes {
   sut: LogControllerDecorator
   controllerStub: Controller
+}
+
+const makeLogErrorRepository = (): LogErrorRepository => {
+  
 }
 
 const makeController = (): Controller => {
@@ -62,5 +67,23 @@ describe('LogController Decorator', () => {
         name: 'Fernando'
       }
     })
+  })
+  test('Should call LogErrorRepository with correct error if controller return a server error', async () => {
+    const { sut, controllerStub, logErrorRepositoryStub } = makeSut()
+    const fakeError = new Error()
+    fakeError.stack = 'any_stack'
+    const error = serverError(fakeError)
+    const logSpy = jest.spyOn(logErrorRepositoryStub, 'log')
+    jest.spyOn(controllerStub, 'handle').mockReturnValueOnce(new Promise(resolve => resolve(serverError())))
+    const httpRequest = {
+      body:{
+        name: 'any_name',
+        email: 'any_mail@mail.com',
+        password: 'any_password',
+        passwordConfirmation: 'any_password'
+      }
+    }
+    await sut.handle(httpRequest)
+    expect(logSpy).toHaveBeenCalledWith('any_stack')
   })
 })
