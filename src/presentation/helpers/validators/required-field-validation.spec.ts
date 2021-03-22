@@ -1,7 +1,7 @@
 import { MissingParamError } from '../../errors'
 import { RequiredFieldValidation } from './required-field-validation'
 
-const makeSut = (): RequiredFieldValidation =>{
+const makeSut = (): RequiredFieldValidation => {
   return new RequiredFieldValidation('field')
 }
 describe('RequiredField Validation', () => {
