@@ -5,7 +5,8 @@
       "target": "ES2019",
       "esModuleInterop": true,
       "allowJs": true,
-      "strict": false
+      "strict": false,
+      "sourceMap": true
     },
     "include": [
       "src"
