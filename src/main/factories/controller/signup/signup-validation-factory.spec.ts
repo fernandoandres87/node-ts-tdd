@@ -1,9 +1,9 @@
-import { ValidationComposite, RequiredFieldValidation, CompareFieldValidation, EmailValidation } from '../../../presentation/helpers/validators'
-import { MakeSignUpValidation } from './signup-validation-factory'
-import { Validation } from '../../../presentation/protocols/validation'
-import { EmailValidator } from '../../../presentation/protocols/email-validator'
+import { ValidationComposite, RequiredFieldValidation, CompareFieldValidation, EmailValidation } from '../../../../presentation/helpers/validators'
+import { makeSignUpValidation } from './signup-validation-factory'
+import { Validation } from '../../../../presentation/protocols/validation'
+import { EmailValidator } from '../../../../presentation/protocols/email-validator'
 
-jest.mock('../../../presentation/helpers/validators/validation-composite')
+jest.mock('../../../../presentation/helpers/validators/validation-composite')
 
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
@@ -16,7 +16,7 @@ const makeEmailValidator = (): EmailValidator => {
 
 describe('SignUpValidation Factory', () => {
   test('Should call ValidationComposite with all validations', () => {
-    MakeSignUpValidation()
+    makeSignUpValidation()
     const validations: Validation[] = []
     for (const field of ['name', 'email', 'password', 'passwordConfirmation']) {
       validations.push(new RequiredFieldValidation(field))
