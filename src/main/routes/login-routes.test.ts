@@ -4,7 +4,7 @@ import { MongoHelper } from '../../infra/db/mongodb/helpers/mongo-helper'
 import { Collection } from 'mongodb'
 import { hash } from 'bcrypt'
 
-let accountCollections: Collection
+let accountCollection: Collection
 
 describe('Login Routes', () => {
   beforeAll(async () => {
@@ -15,8 +15,8 @@ describe('Login Routes', () => {
     await MongoHelper.disconnect()
   })
   beforeEach(async () => {
-    accountCollections = await MongoHelper.getCollection('accounts')
-    await accountCollections.deleteMany({})
+    accountCollection = await MongoHelper.getCollection('accounts')
+    await accountCollection.deleteMany({})
   })
   describe('Post /signup', () => {
     test('Should return 200 on signup', async () => {
@@ -34,7 +34,7 @@ describe('Login Routes', () => {
   describe('Post /login', () => {
     test('Should return 200 on login', async () => {
       const password = await hash('123', 10)
-      await accountCollections.insertOne({
+      await accountCollection.insertOne({
         name: 'Fernando',
         email: 'fer@fer.com',
         password
