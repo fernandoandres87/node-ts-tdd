@@ -1,5 +1,6 @@
 import { LoadSurveysController } from './load-surveys-controller'
 import { SurveyModel, LoadSurveys } from './load-surveys-controller-protocols'
+import { okRequest } from '../../../helpers/http/http-helper'
 import MockDate from 'mockdate'
 
 const makeFakeSurveys = (): SurveyModel[] => {
@@ -62,8 +63,7 @@ describe('LoadSurveys Controller', () => {
 
   test('Should return 200 on success', async () => {
     const { sut } = makeSut()
-    const loadSpy = jest.spyOn(loadSurveysStub, 'load')
-    await sut.handle({})
-    expect(loadSpy).toHaveBeenCalled()
+    const httpResponse = await sut.handle({})
+    expect(httpResponse).toEqual(okRequest(makeFakeSurveys()))
   })
 })
