@@ -1,8 +1,8 @@
-import { LogErrorRepository } from '../../data/protocols/db/log/log-error-repository'
-import { AccountModel } from '../../domain/models/account'
-import { serverError, okRequest } from '../../presentation/helpers/http/http-helper'
-import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols'
 import { LogControllerDecorator } from './logs-controller-decorator'
+import { LogErrorRepository } from '@/data/protocols/db/log/log-error-repository'
+import { AccountModel } from '@/domain/models/account'
+import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
+import { serverError, okRequest } from '@/presentation/helpers/http/http-helper'
 
 const makeController = (): Controller => {
   class ControllerStub implements Controller {
