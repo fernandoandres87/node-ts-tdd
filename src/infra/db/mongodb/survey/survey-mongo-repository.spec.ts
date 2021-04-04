@@ -16,6 +16,7 @@ describe('Survey Mongo Repository', () => {
   afterAll(async () => {
     await MongoHelper.disconnect()
   })
+
   beforeEach(async () => {
     surveyCollection = await MongoHelper.getCollection('surveys')
     await surveyCollection.deleteMany({})
