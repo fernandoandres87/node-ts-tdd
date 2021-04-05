@@ -1,10 +1,6 @@
-import { SurveyAnswerModel } from '@/domain/models/survey'
+import { AccountModel } from '@/presentation/middlewares/auth-middleware-protocols'
 
-export type AddSurveyModel = {
-  question: string
-  answers: SurveyAnswerModel[]
-  date: Date
-}
+export type AddSurveyModel = Omit<AccountModel, 'id'>
 
 export interface AddSurvey {
   add (data: AddSurveyModel): Promise<void>
