@@ -2,7 +2,7 @@ import { LoginController } from './login-controller'
 import { HttpRequest, Authentication, Validation } from './login-controller-protocols'
 import { MissingParamError } from '@/presentation/errors'
 import { badRequest, okRequest, serverError, unauthorized } from '@/presentation/helpers/http/http-helper'
-import { AuthenticationModel } from '@/domain/useCases/authentication'
+import { AuthenticationModel } from '@/domain/useCases/account/authentication'
 
 const makeAuthentication = (): Authentication => {
   class AuthenticatioStub implements Authentication {

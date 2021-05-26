@@ -1,9 +1,9 @@
 import { MongoHelper } from '../helpers/mongo-helper'
 import { SurveyModel } from '@/domain/models/survey'
-import { AddSurveyModel } from '@/domain/useCases/add-survey'
+import { AddSurveyModel } from '@/domain/useCases/survey/add-survey'
 import { LoadSurveyRepository } from '@/data/protocols/db/survey/load-survey-repository'
-import { AddSurveyRepository } from '@/data/usecases/add-survey/db-add-survey-protocols'
-import { LoadSurveyByIdRepository } from '@/data/usecases/load-survey-by-id/db-load-survey-by-id.protocols'
+import { AddSurveyRepository } from '@/data/usecases/survey/add-survey/db-add-survey-protocols'
+import { LoadSurveyByIdRepository } from '@/data/usecases/survey/load-survey-by-id/db-load-survey-by-id.protocols'
 
 export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveyRepository, LoadSurveyByIdRepository {
   async add (surveyData: AddSurveyModel): Promise<void> {
