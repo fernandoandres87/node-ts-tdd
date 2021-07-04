@@ -5,7 +5,8 @@ const makeFakeAccount = (): AccountModel => ({
   id: 'valid_id',
   name: 'valid_name',
   email: 'valid_email@mail.com',
-  password: 'hashed_password'
+  password: 'hashed_password',
+  role: 'valid_role'
 })
 
 const makeDecrypter = (): Decrypter => {

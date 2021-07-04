@@ -13,11 +13,12 @@ export class SignUpController implements Controller {
     try {
       const error = this.validation.validate(httpRequets.body)
       if (error) { return badRequest(error) }
-      const { name, email, password } = httpRequets.body
+      const { name, email, password, role } = httpRequets.body
       const account = await this.addAccount.add({
         name,
         email,
-        password
+        password,
+        role
       })
       if (!account) {
         return forbidden(new EmailInUseError())
